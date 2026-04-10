@@ -30,8 +30,13 @@ class LoginController: UIViewController {
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        /* UILabel은 UIView의 자식 클래스라서 anchor()를 호출할 수 있음 */
+        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor)
+        titleLabel.centerX(inView: view)
+
+        /* 위 코드와 동일한 작동을 하는 코드임 */
+        // titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        // titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
